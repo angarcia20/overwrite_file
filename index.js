@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+async function Run(){
 try {
   // `who-to-greet` input defined in action metadata file
   const repoToken = core.getInput('repo-token');
@@ -63,4 +64,5 @@ try {
 
 } catch (error) {
   core.setFailed(error.message);
+}
 }
