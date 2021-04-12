@@ -13,7 +13,9 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
   const octokit = github.getOctokit(repoToken)
-  console.log("OCTOKIT PRINT", octokit.request());
+  console.log("OCTOKIT PRINT", octokit.request('GET /users/{username}', {
+    username: 'username'
+  }))
 
 
 
