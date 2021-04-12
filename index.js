@@ -15,9 +15,7 @@ try {
   // console.log(`The event payload: ${payload}`);
 
   const octokit = github.getOctokit(repoToken);
-    await octokit.request('GET /users/{username}/hovercard', {
-      username: 'username'
-    })
+    await octokit.request('GET /user')
 
 
 
