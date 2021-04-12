@@ -17,7 +17,7 @@ try {
     const octokit = github.getOctokit(repoToken);
     const result = await octokit.request('GET /user')
     console.log("RESULT", result.data.login);
-    const email = result + "@poligran.edu.co";
+    const email = result.data.login + "@poligran.edu.co";
     console.log("email", email);
 
 
