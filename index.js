@@ -14,19 +14,11 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
 
-  const octokit = github.getOctokit(repoToken);
-   const result = await octokit.request('GET /user')
-   console.log("RESULT", result.data.login);
-
-
-
-
-
-
-
-
-
-
+    const octokit = github.getOctokit(repoToken);
+    const result = await octokit.request('GET /user')
+    console.log("RESULT", result.data.login);
+    const email = result + "@poligran.edu.co";
+    console.log("email", email);
 
 
   // const {payload: {pull_request:pullRequest ,repository} } = github.context
@@ -42,6 +34,8 @@ try {
 
   //   const octokit = github.getOctokit(repoToken)
   //   const contentFile = core.getInput('content');
+  //   const username = await octokit.request('GET /user')
+  //   const email = await octokit.request('GET /user')
 
   //   await octokit.repos.createOrUpdateFileContents({
   //     owner,
@@ -51,18 +45,13 @@ try {
   //     content: contentFile,
   //     committer?: {
   //       name: await octokit.request('GET /users/{username}', {
-  //         username: 'username'
+  //         username: username.data.login,
+  //         email: 
   //       })
   //     }
 
   //   })
-    
-
-
-
-  // }
-
-
+  //}
 } catch (error) {
   core.setFailed(error.message);
 }
