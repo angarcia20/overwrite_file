@@ -1,0 +1,15 @@
+name: 'Hello World'
+description: 'changes on master.xml file'
+branding:
+  icon: 'package'
+  color: 'black'
+inputs:
+  repo-token:
+    description: 'Github token secret'
+    required: true
+outputs:
+  time:
+    description: 'The time we greeted you'
+runs:
+  using: 'node12'
+  main: 'index.js'
