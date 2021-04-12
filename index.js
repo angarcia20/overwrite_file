@@ -11,7 +11,7 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
 
-  const payload = github.context
+  const payload = github.context.repo
   console.log('the payload : ',payload );
 
 
