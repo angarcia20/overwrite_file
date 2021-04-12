@@ -7,6 +7,9 @@ inputs:
   repo-token:
     description: 'Github token secret'
     required: true
+  content:
+    description: 'Content from file'
+    required: true
 outputs:
   time:
     description: 'The time we greeted you'
