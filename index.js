@@ -16,7 +16,7 @@ try {
 
   const octokit = github.getOctokit(repoToken);
    const result = await octokit.request('GET /user')
-   console.log("RESULT", result.data.email);
+   console.log("RESULT", result.data.login);
 
 
 
