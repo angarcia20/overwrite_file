@@ -15,7 +15,8 @@ try {
   // console.log(`The event payload: ${payload}`);
 
   const octokit = github.getOctokit(repoToken);
-    await octokit.request('GET /user')
+   const result= await octokit.request('GET /user')
+   console.log("RESULT", result);
 
 
 
