@@ -2,6 +2,8 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 Run();
 async function getSHA(owner,repo,path) {
+  const repoToken = core.getInput('repo-token');
+  const octokit = github.getOctokit(repoToken)
   const result = await octokit.repos.getContent({
     owner: "Swizec",
     repo: "test-repo",
