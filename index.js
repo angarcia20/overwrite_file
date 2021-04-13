@@ -24,7 +24,7 @@ try {
   const repoFullName = repository.full_name;
   console.log("REPOSITORY", repoFullName)
 
-  if(!repoFullName || !pullRequest){
+  if(!repoFullName){
     core.error('this action do not work')
     // core.setOutput('comment-created','false')
   }else{
