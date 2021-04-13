@@ -28,7 +28,6 @@ try {
     core.error('this action do not work')
     // core.setOutput('comment-created','false')
   }else{
-    const {number: issueNumber} = pullRequest
     const [owner,repo] = repoFullName.split("/")
 
     const octokit = github.getOctokit(repoToken)
