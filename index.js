@@ -1,6 +1,10 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { Base64 } = require("js-base64");
+const fs = require("fs");
 Run();
+
+
 async function getSHA(owner,repo,path) {
   const repoToken = core.getInput('repo-token');
   const octokit = github.getOctokit(repoToken)
@@ -12,6 +16,8 @@ async function getSHA(owner,repo,path) {
   const sha = result.data.sha;
   return sha;
 }
+
+
 async function Run(){
 try {
   // `who-to-greet` input defined in action metadata file
@@ -42,10 +48,11 @@ try {
     const [owner,repo] = repoFullName.split("/")
 
     const octokit = github.getOctokit(repoToken)
-    const contentFile = core.getInput('content');
     const username = await octokit.request('GET /user')
     const email = username.data.login + "@poligran.edu.co";
     const sha = await getSHA(owner,repo,'master.xml');
+    const content = fs.readFileSync("master.xml", "utf-8")
+    const contentFile = Base64.encode(content)
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
