@@ -51,7 +51,7 @@ try {
     const username = await octokit.request('GET /user')
     const email = username.data.login + "@poligran.edu.co";
     const sha = await getSHA(owner,repo,'master.xml');
-    const contentFile = Base64.encode(core.getInput('master.xml'))
+    const contentFile = Base64.encode('F from here');
 
     await octokit.repos.createOrUpdateFileContents({
       owner,

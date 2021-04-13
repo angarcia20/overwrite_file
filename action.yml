@@ -10,7 +10,6 @@ inputs:
   content:
     description: 'Content from file'
     required: true
-    default: 'F en el chat'
 outputs:
   time:
     description: 'The time we greeted you'
