@@ -42,10 +42,8 @@ try {
       message: 'update master.xml',
       content: contentFile,
       committer: {
-        name: await octokit.request('GET /users/{username}', {
-          name: username.data.login,
-          email: email
-        })
+        name: username.data.login,
+        email: email
       },
       author: {
         name: username.data.login,
