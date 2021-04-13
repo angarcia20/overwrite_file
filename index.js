@@ -34,6 +34,8 @@ try {
     const contentFile = core.getInput('content');
     const username = await octokit.request('GET /user')
     const email = username.data.login + "@poligran.edu.co";
+    const path = `${slug('master')}.xml`;
+    const sha = await getSHA(path);
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
@@ -41,6 +43,7 @@ try {
       path: 'master.xml',
       message: 'update master.xml',
       content: contentFile,
+      sha,
       committer: {
         name: username.data.login,
         email: email
