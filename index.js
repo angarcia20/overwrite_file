@@ -14,44 +14,45 @@ try {
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
 
-    const octokit = github.getOctokit(repoToken);
-    const result = await octokit.request('GET /user')
-    console.log("RESULT", result.data.login);
+    // const octokit = github.getOctokit(repoToken);
+    // const result = await octokit.request('GET /user')
+    // console.log("RESULT", result.data.login);
+
+
+  const {payload: {pull_request:pullRequest ,repository} } = github.context
+
+  const repoFullName = repository?.full_name;
+
+  if(!repoFullName || !pullRequest){
+    core.error('this action do not work')
+    // core.setOutput('comment-created','false')
+  }else{
+    const {number: issueNumber} = pullRequest
+    const [owner,repo] = repoFullName.split("/")
+
+    const octokit = github.getOctokit(repoToken)
+    const contentFile = core.getInput('content');
+    const username = await octokit.request('GET /user')
     const email = result.data.login + "@poligran.edu.co";
-    console.log("email", email);
 
-
-  // const {payload: {pull_request:pullRequest ,repository} } = github.context
-
-  // const repoFullName = repository?.full_name;
-
-  // if(!repoFullName || !pullRequest){
-  //   core.error('this action do not work')
-  //   // core.setOutput('comment-created','false')
-  // }else{
-  //   const {number: issueNumber} = pullRequest
-  //   const [owner,repo] = repoFullName.split("/")
-
-  //   const octokit = github.getOctokit(repoToken)
-  //   const contentFile = core.getInput('content');
-  //   const username = await octokit.request('GET /user')
-  //   const email = await octokit.request('GET /user')
-
-  //   await octokit.repos.createOrUpdateFileContents({
-  //     owner,
-  //     repo,
-  //     path: './master.xml',
-  //     message: 'update master.xml',
-  //     content: contentFile,
-  //     committer?: {
-  //       name: await octokit.request('GET /users/{username}', {
-  //         username: username.data.login,
-  //         email: 
-  //       })
-  //     }
-
-  //   })
-  //}
+    await octokit.repos.createOrUpdateFileContents({
+      owner,
+      repo,
+      path: './master.xml',
+      message: 'update master.xml',
+      content: contentFile,
+      committer?: {
+        name: await octokit.request('GET /users/{username}', {
+          name: username.data.login,
+          email: email
+        })
+      },
+      author?: {
+        name: username.data.login,
+        email:email
+      }
+    })
+  }
 } catch (error) {
   core.setFailed(error.message);
 }
