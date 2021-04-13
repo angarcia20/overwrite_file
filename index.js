@@ -38,7 +38,7 @@ try {
     await octokit.repos.createOrUpdateFileContents({
       owner,
       repo,
-      path: './master.xml',
+      path: 'master.xml',
       message: 'update master.xml',
       content: contentFile,
       committer: {
