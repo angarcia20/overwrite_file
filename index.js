@@ -5,8 +5,8 @@ async function getSHA(owner,repo,path) {
   const repoToken = core.getInput('repo-token');
   const octokit = github.getOctokit(repoToken)
   const result = await octokit.repos.getContent({
-    owner: "Swizec",
-    repo: "test-repo",
+    owner,
+    repo,
     path,
   });
   const sha = result.data.sha;
