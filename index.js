@@ -52,12 +52,12 @@ try {
     const email = username.data.login + "@poligran.edu.co";
     const sha = await getSHA(owner,repo,'master.xml');
     const content = fs.readFileSync("master.xml", "utf-8")
-    const contentFile = Base64.encode(core.getInput('master.xml'))
+    const contentFile = Base64.encode(core.getInput('./master.xml'))
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
       repo,
-      path: 'master.xml',
+      path: './master.xml',
       message: 'update master.xml',
       content: contentFile,
       sha,
