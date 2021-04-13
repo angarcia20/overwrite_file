@@ -41,13 +41,13 @@ try {
       path: './master.xml',
       message: 'update master.xml',
       content: contentFile,
-      committer?: {
+      committer: {
         name: await octokit.request('GET /users/{username}', {
           name: username.data.login,
           email: email
         })
       },
-      author?: {
+      author: {
         name: username.data.login,
         email:email
       }
