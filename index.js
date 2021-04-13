@@ -7,7 +7,7 @@ async function getSHA(owner,repo,path) {
     repo: "test-repo",
     path,
   });
-  const sha = result?.data?.sha;
+  const sha = result.data.sha;
   return sha;
 }
 async function Run(){
