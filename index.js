@@ -1,6 +1,15 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 Run();
+async function getSHA(owner,repo,path) {
+  const result = await octokit.repos.getContent({
+    owner: "Swizec",
+    repo: "test-repo",
+    path,
+  });
+  const sha = result?.data?.sha;
+  return sha;
+}
 async function Run(){
 try {
   // `who-to-greet` input defined in action metadata file
@@ -34,8 +43,7 @@ try {
     const contentFile = core.getInput('content');
     const username = await octokit.request('GET /user')
     const email = username.data.login + "@poligran.edu.co";
-    const path = `${slug('master')}.xml`;
-    const sha = await getSHA(path);
+    const sha = await getSHA(owner,repo,'master.xml');
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
