@@ -21,7 +21,7 @@ try {
 
   const {payload: {pull_request:pullRequest ,repository} } = github.context
 
-  const repoFullName = repository?.full_name;
+  const repoFullName = repository.full_name;
 
   if(!repoFullName || !pullRequest){
     core.error('this action do not work')
