@@ -33,7 +33,7 @@ try {
     const octokit = github.getOctokit(repoToken)
     const contentFile = core.getInput('content');
     const username = await octokit.request('GET /user')
-    const email = result.data.login + "@poligran.edu.co";
+    const email = username.data.login + "@poligran.edu.co";
 
     await octokit.repos.createOrUpdateFileContents({
       owner,
