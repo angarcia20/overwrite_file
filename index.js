@@ -2,9 +2,6 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const { Base64 } = require("js-base64");
 const fs = require("fs");
-Run();
-
-
 async function getSHA(owner,repo,path) {
   const repoToken = core.getInput('repo-token');
   const octokit = github.getOctokit(repoToken)
@@ -74,3 +71,5 @@ try {
   core.setFailed(error.message);
 }
 }
+Run();
+
