@@ -7,8 +7,8 @@ inputs:
   repo-token:
     description: 'Github token secret'
     required: true
-  content:
-    description: 'Content from file'
+  files-added:
+    description: 'content files added'
     required: true
 outputs:
   time:
