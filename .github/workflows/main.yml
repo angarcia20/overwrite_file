@@ -40,9 +40,7 @@ jobs:
         uses: ./
         with:
           repo-token: ${{ secrets.REPOSITORY_TOKEN }}
-          files-added: $FILE_ADDED
-        env:
-          FILE_ADDED: ${{ needs.scan_files.outputs.file_added }}
+          files-added: ${{ needs.scan_files.outputs.file_added }}
       - name: Get the output time
         run: echo "The time was ${{ steps.token.outputs.time }}"
 
