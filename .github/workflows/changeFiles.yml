@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     name: verify files changed
     outputs:
-      file_added: ${{ step.file_changes.outputs.files_added }}
+      file_added: ${{ steps.file_changes.outputs.files_added }}
       file_modified: ${{ steps.file_changes.outputs.files_modified }}
     steps:
       - id: file_changes
