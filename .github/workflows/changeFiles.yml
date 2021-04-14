@@ -31,6 +31,9 @@ jobs:
     steps:
       - name: verify result
         run: |
-           echo 'Archivos modificados: ${{ outputs.file_modified }}'
-           echo 'Archivos agregados: ${{ outputs.file_added }}'
+           echo "Archivos modificados: $FILE_MODIFIED"
+           echo "Archivos agregados: $FILE_ADDED"
+        env:
+          FILE_ADDED: ${{ needs.scan_files.outputs.file_added }}
+          FILE_MODIFIED: ${{ needs.scan_files.outputs.file_modified }}
   
