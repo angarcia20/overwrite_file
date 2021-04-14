@@ -25,9 +25,12 @@ jobs:
   Save_changes_Files:
     runs-on: ubuntu-latest
     needs: scan_files
+    outputs:
+        file_added: ${{ needs.scan_files.outputs.file_added }}
+        file_modified: ${{ needs.scan_files.outputs.file_modified }}
     steps:
       - name: verify result
         run: |
-           echo 'Archivos modificados: ${{ needs.scan_files.outputs.file_modified }}'
-           echo 'Archivos agregados: ${{ needs.scan_files.outputs.file_added }}'
+           echo 'Archivos modificados: $file_added'
+           echo 'Archivos agregados: $file_modified'
   
