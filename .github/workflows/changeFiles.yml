@@ -4,8 +4,7 @@ on:
   push:
     branches:
     - main
-
-
+    
 jobs:
   scan_files:
     runs-on: ubuntu-latest
