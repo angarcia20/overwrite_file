@@ -45,9 +45,10 @@ function includeFiles(array) {
 async function overwriteFile(master,repoToken){
 
    const {payload: {pull_request:pullRequest ,repository} } = github.context
-
+    
     const repoFullName = repository.full_name;
-    console.log("REPOSITORY", repoFullName)
+    console.log("REPOSITORY", repoFullName);
+    console.log('Pull Request', pullRequest);
 
     if(!repoFullName){
      // core.setFailed('this action do not work')
@@ -61,7 +62,7 @@ async function overwriteFile(master,repoToken){
       const sha = await getSHA(owner,repo,'master.xml');
       const contentFile = Base64.encode('mastersss');
 
-      const httpResult= octokit.repos.createOrUpdateFileContents({
+      const httpResult= await octokit.repos.createOrUpdateFileContents({
         owner,
         repo,
         path: 'master.xml',
