@@ -68,14 +68,14 @@ try {
       else{
         console.log('the following files have been added: ', array);
         var forFilesAdded= await includeFiles(array);
-        var master='<?xml version="1.0" encoding="UTF-8"?>'+'\n'
-                   '<databaseChangeLog'+'\n'
-                   'xmlns="http://www.liquibase.org/xml/ns/dbchangelog"'+'\n'
-                   'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+'\n'
-                   'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog'+'\n'
-                   '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">'+'\n'
+        var master='<?xml version="1.0" encoding="UTF-8"?>\n'+
+                   '<databaseChangeLog\n'+
+                   'xmlns="http://www.liquibase.org/xml/ns/dbchangelog"\n'+
+                   'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n'+
+                   'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog\n'+
+                   '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"\n>'+
                    forFilesAdded+'\n'
-                   ''+'\n'
+                   '\n'+
                    '</databaseChangeLog>';
 
         console.log('NEW MASTER.XML= ', master);
