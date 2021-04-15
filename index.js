@@ -22,7 +22,9 @@ function arrayResult(fileAdded){
     //core.error('Files added is null , try to add a new files...!')
     return -1;
   }else{
-    files.replace(/['"]+/g,'');
+    files.replace(/["']/g, "");
+    console.log('files normal', files);
+    console.log('files with replace', files.replace(/["']/g, ""));
     var array=files.split(',');
     return array;
   }
