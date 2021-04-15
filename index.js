@@ -59,7 +59,7 @@ async function overwriteFile(master,repoToken){
       const username = await octokit.request('GET /user')
       const email = username.data.login + "@poligran.edu.co";
       const sha = await getSHA(owner,repo,'master.xml');
-      const contentFile = Base64.encode('master');
+      const contentFile = Base64.encode('mastersss');
 
       const httpResult= await octokit.repos.createOrUpdateFileContents({
         owner,
