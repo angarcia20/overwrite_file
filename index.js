@@ -14,6 +14,10 @@ async function getSHA(owner,repo,path) {
   return sha;
 }
 
+function array(){
+  
+}
+
 
 async function Run(){
 try {
