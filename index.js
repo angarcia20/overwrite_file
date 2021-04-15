@@ -32,15 +32,13 @@ function arrayResult(fileAdded){
 }
 
 function includeFiles(array) {
-
   var result='';
   for (let index = 0; index < array.length; index++) {
     result += '<include file='+array[index]+
-              'relativeToChangelogFile="true" />';
+              'relativeToChangelogFile="true" />'+
+              '';
+
   }
-
-
-
 }
 
 
@@ -76,6 +74,11 @@ try {
                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
                    'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog'+
                    '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">';
+                   forFilesAdded+
+                   ''+
+                   '</databaseChangeLog>';
+
+        console.log('NEW MASTER.XML= ', master);
 
                    
 
