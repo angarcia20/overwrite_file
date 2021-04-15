@@ -80,58 +80,41 @@ try {
                    '\n'+
                    '</databaseChangeLog>';
 
-        console.log('NEW MASTER.XML= ', master);
-        console.log('forFiles', forFilesAdded);
+    // const {payload: {pull_request:pullRequest ,repository} } = github.context
 
-                   
+    // const repoFullName = repository.full_name;
+    // console.log("REPOSITORY", repoFullName)
 
+    // if(!repoFullName){
+    //   core.error('this action do not work')
+    //   // core.setOutput('comment-created','false')
+    // }else{
+    //   const [owner,repo] = repoFullName.split("/")
 
-                   
+    //   const octokit = github.getOctokit(repoToken)
+    //   const username = await octokit.request('GET /user')
+    //   const email = username.data.login + "@poligran.edu.co";
+    //   const sha = await getSHA(owner,repo,'master.xml');
+    //   const contentFile = Base64.encode(master);
 
-        
-        
-        
-          
-      }
-
-
-    //-----------------------------------------------------------------------//
-
-
-  // const {payload: {pull_request:pullRequest ,repository} } = github.context
-
-  // const repoFullName = repository.full_name;
-  // console.log("REPOSITORY", repoFullName)
-
-  // if(!repoFullName){
-  //   core.error('this action do not work')
-  //   // core.setOutput('comment-created','false')
-  // }else{
-  //   const [owner,repo] = repoFullName.split("/")
-
-  //   const octokit = github.getOctokit(repoToken)
-  //   const username = await octokit.request('GET /user')
-  //   const email = username.data.login + "@poligran.edu.co";
-  //   const sha = await getSHA(owner,repo,'master.xml');
-  //   const contentFile = Base64.encode('F from here');
-
-  //   await octokit.repos.createOrUpdateFileContents({
-  //     owner,
-  //     repo,
-  //     path: 'master.xml',
-  //     message: 'update master.xml',
-  //     content: contentFile,
-  //     sha,
-  //     committer: {
-  //       name: username.data.login,
-  //       email: email
-  //     },
-  //     author: {
-  //       name: username.data.login,
-  //       email:email
-  //     }
-  //   })
-  // }
+    //   await octokit.repos.createOrUpdateFileContents({
+    //     owner,
+    //     repo,
+    //     path: 'master.xml',
+    //     message: 'update master.xml',
+    //     content: contentFile,
+    //     sha,
+    //     committer: {
+    //       name: username.data.login,
+    //       email: email
+    //     },
+    //     author: {
+    //       name: username.data.login,
+    //       email:email
+    //     }
+    //   })
+    // }
+  }
 } catch (error) {
   core.setFailed(error.message);
 }
