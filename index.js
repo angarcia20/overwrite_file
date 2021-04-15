@@ -89,10 +89,9 @@ try {
   // `who-to-greet` input defined in action metadata file
   const repoToken = core.getInput('repo-token');
   console.log(`repository ${repoToken}!`);
-  const time = (new Date()).toTimeString();
-  core.setOutput("time", time);
-  const content = core.getInput('content');
-  console.log('Content', content);
+  // const time = (new Date()).toTimeString();
+  // core.setOutput("time", time);
+  
   // Get the JSON webhook payload for the event that triggered the workflow
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
