@@ -57,16 +57,14 @@ async function overwriteFile(master,repoToken){
       const [owner,repo] = repoFullName.split("/")
 
       const octokit = github.getOctokit(repoToken)
-      const username = await octokit.request('GET /user')
-      const email = username.data.login + "@poligran.edu.co";
       const sha = await getSHA(owner,repo,'master.xml');
-      const contentFile = Base64.encode('master');
+      const contentFile = Base64.encode('aa');
 
       const httpResult= await octokit.repos.createOrUpdateFileContents({
         owner,
         repo,
         path: 'master.xml',
-        message: 'update',
+        message: 'update master.xml',
         content: contentFile,
         branch: 'main',
         sha
@@ -81,19 +79,11 @@ async function overwriteFile(master,repoToken){
 
 async function Run(){
 try {
-  // `who-to-greet` input defined in action metadata file
   const repoToken = core.getInput('repo-token');
   console.log(`repository ${repoToken}!`);
-  // const time = (new Date()).toTimeString();
-  // core.setOutput("time", time);
+  const time = (new Date()).toTimeString();
+  core.setOutput("time", time);
 
-  // Get the JSON webhook payload for the event that triggered the workflow
-  // const payload = JSON.stringify(github.context.payload, undefined, 2)
-  // console.log(`The event payload: ${payload}`);
-
-    // const octokit = github.getOctokit(repoToken);
-    // const result = await octokit.request('GET /user')
-    // console.log("RESULT", result.data.login);
 
     const FilesAdded = core.getInput('files-added');
 
@@ -118,15 +108,18 @@ try {
        const changefile= await overwriteFile(master,repoToken);
 
        if(changefile === -1 ){
-        core.setFailed('this action do not work');
+        core.setFailed('new-file','Verify files added');
        }else{
        if(changefile === '200' || changefile === '201'){
-         core.setOutput('Status 200 ','The master.xml has been change successfully');
+         core.setOutput('status-code-action ','Status: 200 OK\nThe master.xml has been change successfully');
+         core.setOutput('new-file','the file master.xml has been changed:\n '+ master);
        }else{
          if(changefile === '404'){
-           core.setFailed('Error 404 ', 'Action not found');
+           core.setFailed('status-code-action', 'Status: 404 NOT FOUND \n Resource not found ');
+           core.setOutput('new-file','the file has not been changed');
          }else{
-           core.setFailed('Error 409 ', 'there was a conflict, try again or later');
+           core.setFailed('status-code-action', 'Status: 422 VALIDATION FAILED\nthere was a conflict, try again or later');
+           core.setOutput('new-file','the file has not been changed');
          }
        }
     }

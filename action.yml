@@ -13,6 +13,10 @@ inputs:
 outputs:
   time:
     description: 'The time we greeted you'
+  status-code-action:
+    description: ''
+  new-file:
+    description: ''
 runs:
   using: 'node12'
   main: 'index.js'
