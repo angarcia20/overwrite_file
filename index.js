@@ -33,7 +33,11 @@ try {
     // console.log("RESULT", result.data.login);
 
     const FilesAdded = core.getInput('files-added');
-    console.log('files 2',  FilesAdded);
+    console.log('result',  FilesAdded);
+    console.log('length from file',  FilesAdded.length);
+    // for(var i=0; i<FilesAdded.length; i++){
+
+    // }
 
 
 
