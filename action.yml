@@ -14,9 +14,9 @@ outputs:
   time:
     description: 'The time we greeted you'
   status-code-action:
-    description: ''
+    description: 'status code'
   new-file:
-    description: ''
+    description: 'New file master.xml'
 runs:
   using: 'node12'
   main: 'index.js'
