@@ -33,7 +33,6 @@ try {
     // console.log("RESULT", result.data.login);
 
     const FilesAdded = core.getInput('files-added');
-    console.log(`files 1 ${FilesAdded}!`);
     console.log('files 2',  FilesAdded);
 
 
