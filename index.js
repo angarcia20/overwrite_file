@@ -74,11 +74,12 @@ try {
                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n'+
                    'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog\n'+
                    '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"\n>'+
-                   forFilesAdded+'\n'
+                   forFilesAdded+
                    '\n'+
                    '</databaseChangeLog>';
 
         console.log('NEW MASTER.XML= ', master);
+        console.log('forFiles', forFilesAdded);
 
                    
 
