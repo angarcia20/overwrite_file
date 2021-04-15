@@ -107,6 +107,7 @@ try {
         
        const changefile= await overwriteFile(master,repoToken);
        console.log('NOW')
+       console.log(changefile);
 
        if(changefile === -1 ){
         core.setFailed('new-file','Verify files added');
