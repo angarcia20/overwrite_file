@@ -36,3 +36,7 @@ jobs:
           files-added: ${{ needs.scan_files.outputs.file_added }}
       - name: Get the output time
         run: echo "The time was ${{ steps.token.outputs.time }}"
+      - name: Status exit
+        run: echo "${{steps.token.outputs.status-code-action }}"
+      - name: File master.xml
+        run: echo "${{steps.token.outputs.new-file }}"
