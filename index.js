@@ -67,15 +67,15 @@ async function overwriteFile(master,repoToken){
         path: 'master.xml',
         message: 'update master.xml',
         content: contentFile,
-        sha,
-        committer: {
-          name: username.data.login,
-          email: email
-        },
-        author: {
-          name: username.data.login,
-          email:email
-        }
+        sha
+        // committer: {
+        //   name: username.data.login,
+        //   email: email
+        // },
+        // author: {
+        //   name: username.data.login,
+        //   email:email
+        // }
       });
       console.log(httpResult);
       return httpResult.status.toString();
