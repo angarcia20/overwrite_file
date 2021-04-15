@@ -123,16 +123,19 @@ try {
         
        const changefile= await overwriteFile(master,repoToken);
 
-       
+       if(changefile === -1 ){
+        core.setFailed('this action do not work');
+       }else{
        if(changefile === 200 || changefile === 201){
-         core.setOutput('Status 200 ','The master.xml has been change successfully')
+         core.setOutput('Status 200 ','The master.xml has been change successfully');
        }else{
          if(changefile === 404){
-           core.setFailed('Error 404 ', 'Action not found')
+           core.setFailed('Error 404 ', 'Action not found');
          }else{
-           core.setFailed('Error 409 ', 'there was a conflict, try again or later')
+           core.setFailed('Error 409 ', 'there was a conflict, try again or later');
          }
        }
+    }
   }
 } catch (error) {
   core.setFailed(error.message);
