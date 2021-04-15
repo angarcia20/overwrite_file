@@ -61,7 +61,7 @@ async function overwriteFile(master,repoToken){
       const sha = await getSHA(owner,repo,'master.xml');
       const contentFile = Base64.encode('mastersss');
 
-      const httpResult= await octokit.repos.createOrUpdateFileContents({
+      const httpResult= octokit.repos.createOrUpdateFileContents({
         owner,
         repo,
         path: 'master.xml',
