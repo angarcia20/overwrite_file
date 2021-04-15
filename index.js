@@ -17,7 +17,7 @@ async function getSHA(owner,repo,path) {
 function arrayResult(fileAdded){
   var files='';
   files=fileAdded;
-  files= files.replace(/["']/g, "");
+  //files= files.replace(/["']/g, "");
   files=files.replace('[','');
   files=files.replace(']','');
 
@@ -28,6 +28,18 @@ function arrayResult(fileAdded){
     var array=files.split(',');
     return array;
   }
+
+}
+
+function includeFiles(array) {
+
+  var result='';
+  for (let index = 0; index < array.length; index++) {
+    result += '<include file='+array[index]+
+              'relativeToChangelogFile="true" />';
+  }
+
+
 
 }
 
@@ -50,18 +62,31 @@ try {
     // console.log("RESULT", result.data.login);
 
     const FilesAdded = core.getInput('files-added');
-    console.log('result',  FilesAdded);
-    console.log('length from file',  FilesAdded.length);
 
     var array= await arrayResult(FilesAdded);
       if(array === -1){
         core.setFailed('Files added is null , try to add a new files...!')
       }
       else{
-        console.log('result from function', array);
-        console.log('length from array', array.length);
-      }
+        console.log('the following files have been added: ', array);
+        var forFilesAdded= await includeFiles(array);
+        var master='<?xml version="1.0" encoding="UTF-8"?>'+
+                   '<databaseChangeLog'+
+                   'xmlns="http://www.liquibase.org/xml/ns/dbchangelog"'+
+                   'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"'+
+                   'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog'+
+                   '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">';
 
+                   
+
+
+                   
+
+        
+        
+        
+          
+      }
 
 
     //-----------------------------------------------------------------------//
