@@ -34,7 +34,7 @@ function arrayResult(fileAdded){
 function includeFiles(array) {
   var result='';
   for (let index = 0; index < array.length; index++) {
-    result += '<include file='+array[index]+
+    result += '<include file='+array[index]+'\n'
               'relativeToChangelogFile="true" />'+
               '\n';
 
@@ -76,7 +76,6 @@ try {
                    'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog\n'+
                    '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"\n>'+
                    forFilesAdded+
-                   '\n'+
                    '\n'+
                    '</databaseChangeLog>';
 
