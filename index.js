@@ -18,6 +18,8 @@ function arrayResult(fileAdded){
   var files='';
   files=fileAdded;
   files= files.replace(/["']/g, "");
+  files=files.replace('[','');
+  files=files.replace(']','');
 
   if(fileAdded.length <= 2 ){
     //core.error('Files added is null , try to add a new files...!')
