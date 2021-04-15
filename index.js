@@ -77,6 +77,7 @@ async function overwriteFile(master,repoToken){
           email:email
         }
       });
+      console.log(httpResult);
       return httpResult.status;
     }
 
@@ -122,44 +123,16 @@ try {
         
        const changefile= await overwriteFile(master,repoToken);
 
-       console.log('status', changefile);
-
-
-
-    // const {payload: {pull_request:pullRequest ,repository} } = github.context
-
-    // const repoFullName = repository.full_name;
-    // console.log("REPOSITORY", repoFullName)
-
-    // if(!repoFullName){
-    //   core.error('this action do not work')
-    //   // core.setOutput('comment-created','false')
-    // }else{
-    //   const [owner,repo] = repoFullName.split("/")
-
-    //   const octokit = github.getOctokit(repoToken)
-    //   const username = await octokit.request('GET /user')
-    //   const email = username.data.login + "@poligran.edu.co";
-    //   const sha = await getSHA(owner,repo,'master.xml');
-    //   const contentFile = Base64.encode('F');
-
-    //  console.log( await octokit.repos.createOrUpdateFileContents({
-    //     owner,
-    //     repo,
-    //     path: 'master.xml',
-    //     message: 'update master.xml',
-    //     content: contentFile,
-    //     sha,
-    //     committer: {
-    //       name: username.data.login,
-    //       email: email
-    //     },
-    //     author: {
-    //       name: username.data.login,
-    //       email:email
-    //     }
-    //   }))
-    // }
+       
+       if(changefile === 200 || changefile === 201){
+         core.setOutput('Status 200 ','The master.xml has been change successfully')
+       }else{
+         if(changefile === 404){
+           core.setFailed('Error 404 ', 'Action not found')
+         }else{
+           core.setFailed('Error 409 ', 'there was a conflict, try again or later')
+         }
+       }
   }
 } catch (error) {
   core.setFailed(error.message);
