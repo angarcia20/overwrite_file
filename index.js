@@ -117,7 +117,7 @@ try {
        }else{
        if(changefile === '200' || changefile === '201'){
          core.setOutput('status-code-action ','Status: 200 OK\nThe master.xml has been change successfully');
-         core.setOutput('The next scripts has been added:\n '+ forFilesAdded +'');
+         core.setOutput('new-file', 'The next scripts has been added to master.xml:\n '+ forFilesAdded +'');
 
        }else{
          if(changefile === '404'){
