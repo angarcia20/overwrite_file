@@ -15,13 +15,14 @@ async function getSHA(owner,repo,path) {
 }
 
 function arrayResult(fileAdded){
-  var files = '';
+  var files='';
   files=fileAdded;
 
   if(fileAdded.length <= 2 ){
     //core.error('Files added is null , try to add a new files...!')
     return -1;
   }else{
+    files.replace(/['"]+/g,'');
     var array=files.split(',');
     return array;
   }
