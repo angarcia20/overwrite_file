@@ -39,6 +39,7 @@ function includeFiles(array) {
               '\n';
 
   }
+  return result;
 }
 
 
@@ -75,6 +76,7 @@ try {
                    'xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog\n'+
                    '              http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd"\n>'+
                    forFilesAdded+
+                   '\n'+
                    '\n'+
                    '</databaseChangeLog>';
 
