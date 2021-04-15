@@ -14,7 +14,7 @@ async function getSHA(owner,repo,path) {
   return sha;
 }
 
-function array(fileAdded){
+function arrayResult(fileAdded){
   var files = '';
   files=fileAdded;
 
@@ -50,7 +50,7 @@ try {
     console.log('result',  FilesAdded);
     console.log('length from file',  FilesAdded.length);
 
-    var array= await array(FilesAdded);
+    var array= await arrayResult(FilesAdded);
       if(array === -1){
         core.error('Files added is null , try to add a new files...!')
       }
