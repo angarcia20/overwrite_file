@@ -42,7 +42,7 @@ function includeFiles(array) {
   return result;
 }
 
-async function overwriteFile(master){
+async function overwriteFile(master,repoToken){
 
    const {payload: {pull_request:pullRequest ,repository} } = github.context
 
@@ -120,7 +120,7 @@ try {
                    '\n'+
                    '</databaseChangeLog>';
         
-       const changefile= await overwriteFile(master);
+       const changefile= await overwriteFile(master,repoToken);
 
        console.log('status', changefile);
 
