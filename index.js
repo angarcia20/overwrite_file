@@ -58,7 +58,7 @@ async function overwriteFile(master,repoToken){
 
       const octokit = github.getOctokit(repoToken)
       const sha = await getSHA(owner,repo,'master.xml');
-      const contentFile = Base64.encode('aa');
+      const contentFile = Base64.encode(master);
 
       const httpResult= await octokit.repos.createOrUpdateFileContents({
         owner,
@@ -106,8 +106,6 @@ try {
                    '</databaseChangeLog>');
         
        const changefile= await overwriteFile(master,repoToken);
-       console.log('NOW')
-       console.log(changefile);
 
        if(changefile === -1 ){
         core.setOutput('status-code-action ','Verify files added')
