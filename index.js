@@ -53,7 +53,7 @@ try {
     var array= await arrayResult(FilesAdded);
       if(array === -1){
         core.error('Files added is null , try to add a new files...!')
-        core.setOutput('FilesAdded', 'Null')
+        core.setFailed('Files added is null , try to add a new files...!')
       }
       else{
         console.log('result from function', array);
