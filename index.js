@@ -68,6 +68,7 @@ async function overwriteFile(master,repoToken){
         path: 'master.xml',
         message: 'update',
         content: contentFile,
+        branch: 'main',
         sha
         }
       );
