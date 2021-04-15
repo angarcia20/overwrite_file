@@ -94,7 +94,7 @@ try {
       else{
         console.log('the following files have been added: ', array);
         var forFilesAdded= await includeFiles(array);
-        var master='<?xml version="1.0" encoding="UTF-8"?>\n'+
+        var master=('<?xml version="1.0" encoding="UTF-8"?>\n'+
                    '<databaseChangeLog\n'+
                    'xmlns="http://www.liquibase.org/xml/ns/dbchangelog"\n'+
                    'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n'+
@@ -103,7 +103,7 @@ try {
                    '\n'+
                    forFilesAdded+
                    '\n'+
-                   '</databaseChangeLog>';
+                   '</databaseChangeLog>');
         
        const changefile= await overwriteFile(master,repoToken);
        console.log('NOW')
