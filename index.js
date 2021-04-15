@@ -78,7 +78,7 @@ async function overwriteFile(master,repoToken){
         }
       });
       console.log(httpResult);
-      return httpResult.status;
+      return httpResult.status.valueOf();
     }
 
 }
