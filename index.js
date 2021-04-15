@@ -113,18 +113,23 @@ try {
         core.setFailed('unexpected error');
         core.setOutput('status-code-action ','Verify files added')
         core.setOutput('new-file','the file has not been changed');
+        return ; 
        }else{
        if(changefile === 200 || changefile === 201){
          core.setOutput('status-code-action ','Status: 200 OK\nThe master.xml has been change successfully');
          core.setOutput('new-file','the file master.xml has been changed:\n '+ master);
+         console.log('true');
+         return ;
        }else{
          if(changefile === 404){
            core.setFailed('Status: 404 NOT FOUND \n Resource not found ');
            core.setOutput('new-file','the file has not been changed');
            core.setOutput('status-code-action ','Status: 404 NOT FOUND \n Resource not found ');
+           return ;
          }else{
            core.setFailed('Status: 422 VALIDATION FAILED\nthere was a conflict, try again or later');
            core.setOutput('new-file','the file has not been changed');
+           return ;
          }
        }
     }
