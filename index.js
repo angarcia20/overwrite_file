@@ -65,18 +65,11 @@ async function overwriteFile(master,repoToken){
         owner,
         repo,
         path: 'master.xml',
-        message: 'update master.xml',
+       // message: 'update master.xml',
         content: contentFile,
         sha
-        // committer: {
-        //   name: username.data.login,
-        //   email: email
-        // },
-        // author: {
-        //   name: username.data.login,
-        //   email:email
-        // }
-      });
+        }
+      );
       console.log(httpResult);
       return httpResult.status.toString();
     }
@@ -91,7 +84,7 @@ try {
   console.log(`repository ${repoToken}!`);
   // const time = (new Date()).toTimeString();
   // core.setOutput("time", time);
-  
+
   // Get the JSON webhook payload for the event that triggered the workflow
   // const payload = JSON.stringify(github.context.payload, undefined, 2)
   // console.log(`The event payload: ${payload}`);
