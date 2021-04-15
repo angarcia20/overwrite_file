@@ -110,17 +110,20 @@ try {
        console.log(changefile);
 
        if(changefile === -1 ){
-        core.setFailed('new-file','Verify files added');
+        core.setFailed('unexpected error');
+        core.setOutput('status-code-action ','Verify files added')
+        core.setOutput('new-file','the file has not been changed');
        }else{
        if(changefile === 200 || changefile === 201){
          core.setOutput('status-code-action ','Status: 200 OK\nThe master.xml has been change successfully');
          core.setOutput('new-file','the file master.xml has been changed:\n '+ master);
        }else{
          if(changefile === 404){
-           core.setFailed('status-code-action', 'Status: 404 NOT FOUND \n Resource not found ');
+           core.setFailed('Status: 404 NOT FOUND \n Resource not found ');
            core.setOutput('new-file','the file has not been changed');
+           core.setOutput('status-code-action ','Status: 404 NOT FOUND \n Resource not found ');
          }else{
-           core.setFailed('status-code-action', 'Status: 422 VALIDATION FAILED\nthere was a conflict, try again or later');
+           core.setFailed('Status: 422 VALIDATION FAILED\nthere was a conflict, try again or later');
            core.setOutput('new-file','the file has not been changed');
          }
        }
