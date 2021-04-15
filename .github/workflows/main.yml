@@ -3,7 +3,7 @@ name: Change file .xml action
 on:
   push:
     branches:
-    - develop
+    - main
 
 jobs:
   scan_files:
