@@ -14,8 +14,18 @@ async function getSHA(owner,repo,path) {
   return sha;
 }
 
-function array(){
-  
+function array(fileAdded){
+  var files = '';
+  files=fileAdded;
+
+  if(fileAdded.length <= 2 ){
+    //core.error('Files added is null , try to add a new files...!')
+    return -1;
+  }else{
+    var array=files.split(',');
+    return array;
+  }
+
 }
 
 
@@ -39,9 +49,14 @@ try {
     const FilesAdded = core.getInput('files-added');
     console.log('result',  FilesAdded);
     console.log('length from file',  FilesAdded.length);
-    // for(var i=0; i<FilesAdded.length; i++){
 
-    // }
+    var array= await array(FilesAdded);
+      if(array === -1){
+        core.error('Files added is null , try to add a new files...!')
+      }
+      else{
+        console.log('result from function', array);
+      }
 
 
 
